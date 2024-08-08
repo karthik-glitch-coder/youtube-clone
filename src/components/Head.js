@@ -1,13 +1,57 @@
-import React from "react";
-import { useDispatch } from "react-redux";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { toggleMenu } from "../utils/appSlice";
+import { YOUTUBE_SEARCH_API } from "../utils/constants";
+import { cacheResults } from "../utils/searchSlice";
 
 const Head = () => {
   const dispatch = useDispatch();
+  const [searchQuery, setSearchQuery] = useState("");
+  const [suggestions, setSuggestions] = useState([]);
+  const [showSuggestions, setShowSuggestions] = useState(false);
+  //here we get the datas from store[search]
+  const searchCache = useSelector((store) => store.search);
 
   const handleToggleMenu = () => {
     dispatch(toggleMenu());
   };
+
+  const getSearchSuggestions = async () => {
+    //Youtube API call for getting suggestions
+    const data = await fetch(YOUTUBE_SEARCH_API + searchQuery);
+    const json = await data.json();
+    setSuggestions(json[1]);
+    //if my searchQuery is not present in searchCache-then dispatch an action to update it
+    dispatch(
+      cacheResults({
+        //here we updating the store with suggestions by the name of searchQuery
+        [searchQuery]: json[1],
+      })
+    );
+  };
+
+  /*
+  searchCache = {
+  "iphone" : ["iphone 11", "iphone 14"]
+  }
+
+(again my search input is iphone)searchQuery = iphone
+*/
+
+  useEffect(() => {
+    //setTimeout - if d/b two keypress is < 200ms it will not call API and vice-versa
+    const timer = setTimeout(() => {
+      if (searchCache[searchQuery]) {
+        setSuggestions(searchCache[searchQuery]);
+      } else {
+        getSearchSuggestions();
+      }
+    }, 200);
+
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [searchQuery]);
 
   return (
     <div className="grid grid-flow-col p-5 m-2 shadow-lg">
@@ -27,13 +71,30 @@ const Head = () => {
         </a>
       </div>
       <div className="col-span-10 text-center">
-        <input
-          className="w-1/2 border border-slate-600 rounded-l-full"
-          type="text"
-        />
-        <button className="border border-slate-600 px-6 rounded-r-full bg-gray-200">
-          🔍
-        </button>
+        <div>
+          <input
+            className="w-1/2 px-3 border border-slate-600 rounded-l-full"
+            type="text"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            onFocus={() => setShowSuggestions(true)}
+            onBlur={() => setShowSuggestions(false)}
+          />
+          <button className="border border-slate-600 px-6 rounded-r-full bg-gray-200">
+            🔍
+          </button>
+          {showSuggestions && (
+            <div className=" border-gray-100 shadow-lg rounded-lg absolute ml-[230px] w-[35rem] bg-white py-2 px-5 text-left">
+              <ul>
+                {suggestions.map((s, index) => (
+                  <li key={index} className="py-1 shadow-sm hover:bg-gray-100">
+                    {s}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+        </div>
       </div>
       <div className="col-span-1">
         <img
