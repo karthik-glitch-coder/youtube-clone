@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleMenu } from "../utils/appSlice";
-import { YOUTUBE_SEARCH_API } from "../utils/constants";
 import { cacheResults } from "../utils/searchSlice";
+import { YOUTUBE_SEARCH_API } from "../utils/constants";
 
 const Head = () => {
   const dispatch = useDispatch();
@@ -80,14 +80,19 @@ const Head = () => {
             onFocus={() => setShowSuggestions(true)}
             onBlur={() => setShowSuggestions(false)}
           />
+
           <button className="border border-slate-600 px-6 rounded-r-full bg-gray-200">
             🔍
           </button>
+
           {showSuggestions && (
             <div className=" border-gray-100 shadow-lg rounded-lg absolute ml-[230px] w-[35rem] bg-white py-2 px-5 text-left">
               <ul>
                 {suggestions.map((s, index) => (
-                  <li key={index} className="py-1 shadow-sm hover:bg-gray-100">
+                  <li
+                    key={index}
+                    className="py-1 shadow-sm hover:bg-gray-100 cursor-pointer"
+                  >
                     {s}
                   </li>
                 ))}

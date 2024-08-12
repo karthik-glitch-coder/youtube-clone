@@ -1,7 +1,12 @@
-const apiKey = "AIzaSyCJVb8EnbeSBJDjB4B59XVJ2ahO3isjwzs";
+export const apiKeyCoder = "AIzaSyCs1ILtMfsCYax7kns_umSkJCO3RBgYmqM";
 export const YOUTUBE_VIDEO_API =
   "https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=50&regionCode=IN&key=" +
-  apiKey;
+  apiKeyCoder;
 
 export const YOUTUBE_SEARCH_API =
   "http://suggestqueries.google.com/complete/search?client=firefox&ds=yt&q=";
+
+export const SEARCH_API_YOUTUBE =
+  "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=20&q=";
+
+export const OFFSET_LIVE_CHAT = 15;

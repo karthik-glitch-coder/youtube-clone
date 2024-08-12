@@ -42,21 +42,24 @@ const commentsData = [
       {
         name: "Karthik",
         text: "lorem ipsum bit confix datu",
-        replies: [{
+        replies: [
+          {
             name: "Karthik",
             text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit ",
             replies: [
               {
                 name: "Karthik",
                 text: "lorem ipsum bit confix datu",
-                replies: [{
+                replies: [
+                  {
                     name: "Karthik",
                     text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit ",
                     replies: [
                       {
                         name: "Karthik",
                         text: "lorem ipsum bit confix datu",
-                        replies: [{
+                        replies: [
+                          {
                             name: "Karthik",
                             text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit ",
                             replies: [
@@ -66,13 +69,16 @@ const commentsData = [
                                 replies: [],
                               },
                             ],
-                          }],
+                          },
+                        ],
                       },
                     ],
-                  }],
+                  },
+                ],
               },
             ],
-          }],
+          },
+        ],
       },
     ],
   },
@@ -90,21 +96,24 @@ const commentsData = [
   {
     name: "Karthik",
     text: "lorem ipsum bit confix datu",
-    replies: [{
+    replies: [
+      {
         name: "Karthik",
         text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit ",
         replies: [
           {
             name: "Karthik",
             text: "lorem ipsum bit confix datu",
-            replies: [{
+            replies: [
+              {
                 name: "Karthik",
                 text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit ",
                 replies: [
                   {
                     name: "Karthik",
                     text: "lorem ipsum bit confix datu",
-                    replies: [{
+                    replies: [
+                      {
                         name: "Karthik",
                         text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit ",
                         replies: [
@@ -114,22 +123,25 @@ const commentsData = [
                             replies: [],
                           },
                         ],
-                      }],
+                      },
+                    ],
                   },
                 ],
-              }],
+              },
+            ],
           },
         ],
-      }],
+      },
+    ],
   },
 ];
 
 const Comment = ({ data }) => {
   const { name, text, replies } = data;
   return (
-    <div className="flex shadow-lg bg-gray-100 rounded-lg my-2">
+    <div className="flex shadow-lg bg-gray-100 rounded-lg my-1 items-center">
       <img
-        className="w-10 h-7 mt-1"
+        className="w-10 h-7"
         src="https://static.vecteezy.com/system/resources/previews/019/879/186/non_2x/user-icon-on-transparent-background-free-png.png"
         alt="comment"
       />
@@ -144,10 +156,10 @@ const Comment = ({ data }) => {
 const CommentsList = ({ comments }) => {
   return comments.map((comment, index) => (
     <div key={index}>
-        <Comment  data={comment} />
-        <div className="pl-5 ml-5  border border-l-black">
-            <CommentsList comments={comment.replies}/>
-        </div>
+      <Comment data={comment} />
+      <div className="pl-5 ml-5  border border-l-black">
+        <CommentsList comments={comment.replies} />
+      </div>
     </div>
   ));
 };
