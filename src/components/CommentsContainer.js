@@ -81,59 +81,7 @@ const commentsData = [
         ],
       },
     ],
-  },
-  {
-    name: "Karthik",
-    text: "lorem ipsum bit confix datu",
-    replies: [
-      {
-        name: "Karthik",
-        text: "lorem ipsum bit confix datu",
-        replies: [],
-      },
-    ],
-  },
-  {
-    name: "Karthik",
-    text: "lorem ipsum bit confix datu",
-    replies: [
-      {
-        name: "Karthik",
-        text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit ",
-        replies: [
-          {
-            name: "Karthik",
-            text: "lorem ipsum bit confix datu",
-            replies: [
-              {
-                name: "Karthik",
-                text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit ",
-                replies: [
-                  {
-                    name: "Karthik",
-                    text: "lorem ipsum bit confix datu",
-                    replies: [
-                      {
-                        name: "Karthik",
-                        text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit ",
-                        replies: [
-                          {
-                            name: "Karthik",
-                            text: "lorem ipsum bit confix datu",
-                            replies: [],
-                          },
-                        ],
-                      },
-                    ],
-                  },
-                ],
-              },
-            ],
-          },
-        ],
-      },
-    ],
-  },
+  }
 ];
 
 const Comment = ({ data }) => {
