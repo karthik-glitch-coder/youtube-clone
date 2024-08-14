@@ -9,6 +9,8 @@ import WatchPage from "./components/WatchPage";
 import Demo from "./components/Demo";
 import Demo2 from "./components/Demo2";
 import SearchQueryRes from "./components/SearchQueryRes";
+import SuggestionSearch from "./components/SuggestionSearch";
+import Shimmer from "./components/Shimmer";
 function App() {
   const appRouter = createBrowserRouter([
     {
@@ -26,6 +28,10 @@ function App() {
         {
           path: "search",
           element: <SearchQueryRes />,
+        },
+        {
+          path: "suggestionSearch",
+          element: <SuggestionSearch />,
         },
         {
           path: "demo",

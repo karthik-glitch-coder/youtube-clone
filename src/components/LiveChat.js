@@ -12,7 +12,6 @@ const LiveChat = () => {
   useEffect(() => {
     const timer = setInterval(() => {
       //API polling
-      console.log("API Polling");
 
       dispatch(
         addMessage({
@@ -26,7 +25,6 @@ const LiveChat = () => {
   }, []);
 
   const handleLiveMessage = () => {
-    console.log(liveMessage);
     dispatch(
       addMessage({
         name: "Karthik🚀",
