@@ -8,6 +8,7 @@ const chatSlice = createSlice({
   },
   reducers: {
     addMessage: (state, action) => {
+      //here, we delete the older chats using splice
       state.messages.splice(OFFSET_LIVE_CHAT, 1);
       state.messages.unshift(action.payload);
     },

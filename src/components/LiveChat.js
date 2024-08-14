@@ -24,7 +24,7 @@ const LiveChat = () => {
     return () => clearInterval(timer);
   }, []);
 
-  const handleLiveMessage = () => {
+  const sendLiveMessage = () => {
     dispatch(
       addMessage({
         name: "Karthik🚀",
@@ -53,7 +53,7 @@ const LiveChat = () => {
         />
         <button
           className="px-4 ml-7 bg-green-200 rounded-lg"
-          onClick={handleLiveMessage}
+          onClick={sendLiveMessage}
         >
           Send
         </button>
